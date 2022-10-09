@@ -11,24 +11,60 @@ namespace CoffeeBar
         // attributes
         string name;
         decimal balance;
+        Item lastItem;
 
-        //constructor
+        /// <summary>
+        /// Property to return the last purchased item
+        /// </summary>
+        public Item LastPurchase
+        {
+            get
+            {
+                return lastItem;
+            }
+        }
+
+        /// <summary>
+        /// Constructor with only the name of the customer.
+        /// Default balance is 10 GBP and the last item is set to null
+        /// </summary>
+        /// <param name="Name">Customer name</param>
         public Person(string Name)
         {
             this.name = Name;
             this.balance = 10.0m;
+            this.lastItem = null;
         }
 
+        /// <summary>
+        /// Constructor with only the name of the customer and their initial deposit.
+        /// Default last item is set to null
+        /// </summary>
+        /// <param name="Name">Customer name</param>
+        /// <param name="Balance">Customer account balance in GBP</param>
         public Person(string Name, decimal Balance)
         {
             this.name = Name;
             this.balance = Balance;
+            this.lastItem = null;
         }
 
-        // methods
+        /// <summary>
+        /// Method to return the name of the account holder
+        /// </summary>
+        /// <returns>The name</returns>
         public string GetName()
         {
             return this.name;
+        }
+
+        /// <summary>
+        /// Method to return the balance of the account holder
+        /// </summary>
+        /// <returns>The balance</returns>
+        public Decimal GetBalance()
+        {
+            return balance;
         }
 
         /// <summary>
@@ -48,7 +84,12 @@ namespace CoffeeBar
         public bool DecBalance(decimal amount)
         {
             bool result = false;
-            //code to decrement the balance...
+            
+            if (this.balance >= amount)
+            {
+                result = true;
+                this.balance -= amount;
+            }
 
             return result;
         }

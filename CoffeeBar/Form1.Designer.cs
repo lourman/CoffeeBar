@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBoxCustomerInfo = new System.Windows.Forms.GroupBox();
+            this.numericUpDownDeposit = new System.Windows.Forms.NumericUpDown();
+            this.labelDeposit = new System.Windows.Forms.Label();
+            this.buttonDeposit = new System.Windows.Forms.Button();
             this.comboBoxCustomerName = new System.Windows.Forms.ComboBox();
             this.textBoxBalance = new System.Windows.Forms.TextBox();
             this.labelBalance = new System.Windows.Forms.Label();
@@ -39,28 +42,67 @@
             this.textBoxCost = new System.Windows.Forms.TextBox();
             this.labelCost = new System.Windows.Forms.Label();
             this.labelItem = new System.Windows.Forms.Label();
-            this.textBoxDeposit = new System.Windows.Forms.TextBox();
-            this.buttonDeposit = new System.Windows.Forms.Button();
-            this.labelDeposit = new System.Windows.Forms.Label();
+            this.textBoxLastItem = new System.Windows.Forms.TextBox();
+            this.labelLastItem = new System.Windows.Forms.Label();
             this.groupBoxCustomerInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDeposit)).BeginInit();
             this.groupBoxItems.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxCustomerInfo
             // 
+            this.groupBoxCustomerInfo.Controls.Add(this.textBoxLastItem);
+            this.groupBoxCustomerInfo.Controls.Add(this.labelLastItem);
+            this.groupBoxCustomerInfo.Controls.Add(this.numericUpDownDeposit);
             this.groupBoxCustomerInfo.Controls.Add(this.labelDeposit);
             this.groupBoxCustomerInfo.Controls.Add(this.buttonDeposit);
-            this.groupBoxCustomerInfo.Controls.Add(this.textBoxDeposit);
             this.groupBoxCustomerInfo.Controls.Add(this.comboBoxCustomerName);
             this.groupBoxCustomerInfo.Controls.Add(this.textBoxBalance);
             this.groupBoxCustomerInfo.Controls.Add(this.labelBalance);
             this.groupBoxCustomerInfo.Controls.Add(this.labelCustomer);
             this.groupBoxCustomerInfo.Location = new System.Drawing.Point(1, 12);
             this.groupBoxCustomerInfo.Name = "groupBoxCustomerInfo";
-            this.groupBoxCustomerInfo.Size = new System.Drawing.Size(310, 217);
+            this.groupBoxCustomerInfo.Size = new System.Drawing.Size(310, 297);
             this.groupBoxCustomerInfo.TabIndex = 0;
             this.groupBoxCustomerInfo.TabStop = false;
             this.groupBoxCustomerInfo.Text = "Customer Information";
+            // 
+            // numericUpDownDeposit
+            // 
+            this.numericUpDownDeposit.DecimalPlaces = 2;
+            this.numericUpDownDeposit.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownDeposit.Location = new System.Drawing.Point(6, 193);
+            this.numericUpDownDeposit.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownDeposit.Name = "numericUpDownDeposit";
+            this.numericUpDownDeposit.Size = new System.Drawing.Size(49, 23);
+            this.numericUpDownDeposit.TabIndex = 8;
+            // 
+            // labelDeposit
+            // 
+            this.labelDeposit.AutoSize = true;
+            this.labelDeposit.Location = new System.Drawing.Point(6, 175);
+            this.labelDeposit.Name = "labelDeposit";
+            this.labelDeposit.Size = new System.Drawing.Size(47, 15);
+            this.labelDeposit.TabIndex = 7;
+            this.labelDeposit.Text = "Deposit";
+            // 
+            // buttonDeposit
+            // 
+            this.buttonDeposit.Location = new System.Drawing.Point(6, 222);
+            this.buttonDeposit.Name = "buttonDeposit";
+            this.buttonDeposit.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeposit.TabIndex = 6;
+            this.buttonDeposit.Text = "Deposit";
+            this.buttonDeposit.UseVisualStyleBackColor = true;
+            this.buttonDeposit.Click += new System.EventHandler(this.buttonDeposit_Click);
             // 
             // comboBoxCustomerName
             // 
@@ -118,15 +160,17 @@
             this.comboBoxItem.Name = "comboBoxItem";
             this.comboBoxItem.Size = new System.Drawing.Size(298, 23);
             this.comboBoxItem.TabIndex = 5;
+            this.comboBoxItem.SelectedIndexChanged += new System.EventHandler(this.comboBoxItem_SelectedIndexChanged);
             // 
             // buttonPurchase
             // 
-            this.buttonPurchase.Location = new System.Drawing.Point(17, 151);
+            this.buttonPurchase.Location = new System.Drawing.Point(6, 131);
             this.buttonPurchase.Name = "buttonPurchase";
             this.buttonPurchase.Size = new System.Drawing.Size(75, 23);
             this.buttonPurchase.TabIndex = 4;
             this.buttonPurchase.Text = "Purchase";
             this.buttonPurchase.UseVisualStyleBackColor = true;
+            this.buttonPurchase.Click += new System.EventHandler(this.buttonPurchase_Click);
             // 
             // textBoxCost
             // 
@@ -154,30 +198,22 @@
             this.labelItem.TabIndex = 0;
             this.labelItem.Text = "Item";
             // 
-            // textBoxDeposit
+            // textBoxLastItem
             // 
-            this.textBoxDeposit.Location = new System.Drawing.Point(6, 155);
-            this.textBoxDeposit.Name = "textBoxDeposit";
-            this.textBoxDeposit.Size = new System.Drawing.Size(100, 23);
-            this.textBoxDeposit.TabIndex = 5;
+            this.textBoxLastItem.Location = new System.Drawing.Point(5, 149);
+            this.textBoxLastItem.Name = "textBoxLastItem";
+            this.textBoxLastItem.ReadOnly = true;
+            this.textBoxLastItem.Size = new System.Drawing.Size(100, 23);
+            this.textBoxLastItem.TabIndex = 10;
             // 
-            // buttonDeposit
+            // labelLastItem
             // 
-            this.buttonDeposit.Location = new System.Drawing.Point(6, 187);
-            this.buttonDeposit.Name = "buttonDeposit";
-            this.buttonDeposit.Size = new System.Drawing.Size(75, 23);
-            this.buttonDeposit.TabIndex = 6;
-            this.buttonDeposit.Text = "Purchase";
-            this.buttonDeposit.UseVisualStyleBackColor = true;
-            // 
-            // labelDeposit
-            // 
-            this.labelDeposit.AutoSize = true;
-            this.labelDeposit.Location = new System.Drawing.Point(6, 131);
-            this.labelDeposit.Name = "labelDeposit";
-            this.labelDeposit.Size = new System.Drawing.Size(47, 15);
-            this.labelDeposit.TabIndex = 7;
-            this.labelDeposit.Text = "Deposit";
+            this.labelLastItem.AutoSize = true;
+            this.labelLastItem.Location = new System.Drawing.Point(5, 125);
+            this.labelLastItem.Name = "labelLastItem";
+            this.labelLastItem.Size = new System.Drawing.Size(55, 15);
+            this.labelLastItem.TabIndex = 9;
+            this.labelLastItem.Text = "Last Item";
             // 
             // Form1
             // 
@@ -191,6 +227,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBoxCustomerInfo.ResumeLayout(false);
             this.groupBoxCustomerInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDeposit)).EndInit();
             this.groupBoxItems.ResumeLayout(false);
             this.groupBoxItems.PerformLayout();
             this.ResumeLayout(false);
@@ -212,6 +249,8 @@
         private Label labelItem;
         private Label labelDeposit;
         private Button buttonDeposit;
-        private TextBox textBoxDeposit;
+        private NumericUpDown numericUpDownDeposit;
+        private TextBox textBoxLastItem;
+        private Label labelLastItem;
     }
 }
